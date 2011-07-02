@@ -40,7 +40,7 @@ public class FreshDeskSSOServlet extends HttpServlet {
 		User user; //Get the user details using your current authentication system
 		String name = "kiran darisi";// Full name of the user
 		String email = "kiran@freshdesk.com";// Email of the user	
-		hash = getHash(name + email + authSecret);
+		hash = getHash(name + email + sharedSecret);
 		
 		try {		
 			
