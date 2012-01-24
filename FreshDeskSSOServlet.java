@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 public class FreshDeskSSOServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 7027717204177362374L;
-	private final String BASE_URL = "http://demo.freshdesk.com/";
+	private final String BASE_URL = "http://demo.freshdesk.com/login/sso";
 	private final String sharedSecret = "df02b88d971c78807a644adeae260919";
 
 
