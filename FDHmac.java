@@ -63,13 +63,13 @@ public class FDHmac
         //User user; //Get the user details using your current authentication system
         String name = "Freshdesk";// Full name of the user
         String email = "kiran@freshdesk.com";// Email of the user
-        long timeInMillis = System.currentTimeMillis(); 
+        long timeInSeconds = System.currentTimeMillis()/1000; 
         
         
         try {       
             
             hash = getHMACHash(name,email,timeInMillis);
-            url = BASE_URL + "?name="+name+"&email="+email+"&timestamp="+timeInMillis+"&hash=" + hash; 
+            url = BASE_URL + "?name="+name+"&email="+email+"&timestamp="+timeInSeconds+"&hash=" + hash; 
             
         }catch (Exception e) {
             //Handle appropriate code
