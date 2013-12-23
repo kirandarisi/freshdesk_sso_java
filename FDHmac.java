@@ -68,7 +68,7 @@ public class FDHmac
         
         try {       
             
-            hash = getHMACHash(name,email,timeInMillis);
+            hash = getHMACHash(name,email,timeInSeconds);
             url = BASE_URL + "?name="+name+"&email="+email+"&timestamp="+timeInSeconds+"&hash=" + hash; 
             
         }catch (Exception e) {
