@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.io.File;
 import java.io.DataInputStream;
 import java.io.FileInputStream ;
+import java.nio.charset.StandardCharsets;
 import java.lang.reflect.UndeclaredThrowableException;
 
 import java.security.GeneralSecurityException;
@@ -24,7 +25,7 @@ public class FDHmac
         StringBuffer hexString = new StringBuffer();
         for (int i = 0; i < byteData.length; i++) {
             String hex = Integer.toHexString(0xff & byteData[i]);
-            // NB! E.g.: Integer.toHexString(0x0C) will return "C", not "0C"            
+            // NB! E.g.: Integer.toHexString(0x0C) will return "C", not "0C"
             if (hex.length() == 1) {
                 hexString.append('0');
             }
@@ -34,10 +35,10 @@ public class FDHmac
     }
 
     private static String getHMACHash(String name,String email,long timeInMillis) throws Exception {
-        byte[] keyBytes = sharedSecret.getBytes();
+        byte[] keyBytes = sharedSecret.getBytes(StandardCharsets.UTF_8);
         String movingFact =name+email+timeInMillis;
-        byte[] text = movingFact.getBytes();
-        
+        byte[] text = movingFact.getBytes(StandardCharsets.UTF_8);
+
         String hexString = "";
         Mac hmacMD5;
         try {
