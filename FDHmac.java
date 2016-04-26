@@ -35,7 +35,7 @@ public class FDHmac
 
     private static String getHMACHash(String name,String email,long timeInMillis) throws Exception {
         byte[] keyBytes = sharedSecret.getBytes();
-        String movingFact =name+email+timeInMillis;
+        String movingFact =name+sharedSecret+email+timeInMillis;
         byte[] text = movingFact.getBytes();
         
         String hexString = "";
