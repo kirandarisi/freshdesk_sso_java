@@ -44,7 +44,7 @@ public class FreshDeskSSOServlet extends HttpServlet {
 		
 		try {		
 			
-			url = BASE_URL + "?name="+name+"&email="+email+"&hash=" + hash; 
+			url = BASE_URL + "?name="+FDHmac.encodeUrl(name)+"&email="+FDHmac.encodeUrl(email)+"&hash=" + hash; 
 			
 		}catch (Exception e) {
 			//Handle appropriate code

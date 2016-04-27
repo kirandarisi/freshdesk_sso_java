@@ -2,8 +2,9 @@ import java.io.IOException;
 import java.io.File;
 import java.io.DataInputStream;
 import java.io.FileInputStream ;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.UndeclaredThrowableException;
-
+import java.net.URLEncoder;
 import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 import java.security.InvalidKeyException;
@@ -69,7 +70,7 @@ public class FDHmac
         try {       
             
             hash = getHMACHash(name,email,timeInSeconds);
-            url = BASE_URL + "?name="+name+"&email="+email+"&timestamp="+timeInSeconds+"&hash=" + hash; 
+            url = BASE_URL + "?name="+encodeUrl(name)+"&email="+encodeUrl(email)+"&timestamp="+timeInSeconds+"&hash=" + hash; 
             
         }catch (Exception e) {
             //Handle appropriate code
@@ -78,4 +79,14 @@ public class FDHmac
         }   
         System.out.println(url);
     }
+    
+    static String encodeUrl(String uri) {
+      try {
+        return URLEncoder.encode(uri, "UTF8");
+      } 
+      catch (UnsupportedEncodingException e) {
+        throw new RuntimeException(e);
+      }
+    }
+    
 }
